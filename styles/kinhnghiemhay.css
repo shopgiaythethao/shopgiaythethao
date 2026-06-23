@@ -1,0 +1,379 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+.header {
+    height: 100px;        /* 👈 cố định */
+    padding: 0 30px;     /* bỏ padding trên dưới */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+}
+
+/* Logo */
+.logo img {
+    height: 100%;     /* 👈 ăn theo header */
+    max-height: 100px; /* 👈 giới hạn */
+    width: auto;
+}
+.logo {
+    overflow: hidden;  /* 👈 không cho tràn */
+    display: flex;
+    align-items: center;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    gap: 18px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+}
+
+.menu a i {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.menu a:hover {
+    color: #00ffcc;
+}
+
+/* Ưu đãi nổi bật */
+.menu .sale {
+    color: #7CFC00;
+}
+
+/* Search */
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 8px 35px 8px 12px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+}/* TITLE */
+
+.title{
+    width: 90%;
+
+    margin: 40px auto 20px;
+}
+
+.title h1{
+    font-size: 48px;
+}
+
+/* ARTICLE */
+
+.article{
+    width: 90%;
+
+    background: white;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.article:hover{
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* KHUNG ẢNH */
+
+.img-box{
+    width: 320px;
+    height: 220px;
+
+    flex-shrink: 0;
+}
+
+/* ẢNH */
+
+.img-box img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+/* CONTENT */
+
+.content{
+    flex: 1;
+}
+
+.content h2{
+    font-size: 35px;
+
+    margin-bottom: 20px;
+
+    line-height: 1.4;
+}
+
+/* LINK */
+
+.content h2 a{
+    text-decoration: none;
+
+    color: black;
+
+    transition: 0.3s;
+}
+
+.content h2 a:hover{
+    color: #ff5a00;
+}
+
+.content p{
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    color: #444;
+
+    margin-bottom: 20px;
+}
+
+.content span{
+    color: gray;
+
+    font-size: 16px;
+}
+/* SEARCH */
+.search-box{
+    position:relative;
+}
+
+/* BOX GỢI Ý */
+.suggestions{
+    position:absolute;
+    top:45px;
+    left:0;
+
+    width:100%;
+    background:white;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    display:none;
+
+    z-index:999;
+}
+
+/* ITEM */
+.suggestion-item{
+    padding:12px;
+    cursor:pointer;
+    border-bottom:1px solid #eee;
+}
+
+/* HOVER */
+.suggestion-item:hover{
+    background:#f2f2f2;
+}
+.footer {
+    background: #0b2c3d;
+    color: white;
+    padding-top: 30px;
+}
+.footer {
+    margin-top: 50px; /* 👈 đẩy footer xuống */
+}
+
+/* Layout */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 60px;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    width: 22%;
+}
+
+.footer-col h3, .footer-col h4 {
+    margin-bottom: 10px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-col a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.footer-col a:hover {
+    color: #00e0ff;
+}
+
+/* Subscribe */
+.subscribe {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.subscribe input {
+    padding: 8px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+}
+
+.subscribe button {
+    padding: 8px 15px;
+    border: none;
+    background: #00e0ff;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe button:hover {
+    background: #00bcd4;
+}
+
+/* Bottom */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #ffffff33;
+    margin-top: 20px;
+    padding: 10px 0;
+    font-size: 13px;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+/* dropdown */
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    background: white;
+    min-width: 180px;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+
+    z-index: 999;
+}
+
+.dropdown-menu a{
+    display: block;
+    padding: 12px 15px;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:hover{
+    background: #f3f3f3;
+}
+
+/* hover hiện menu */
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+/* DROPDOWN */
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    display:none;
+
+    position:absolute;
+    top:100%;
+    left:0;
+
+    min-width:220px;
+
+    background:#fff;
+
+    border:1px solid #ddd;
+
+    z-index:999;
+}
+
+.dropdown-menu a{
+    display:block;
+
+    padding:14px 18px;
+
+    color:#444;
+
+    text-decoration:none;
+
+    border-bottom:1px solid #eee;
+}
+
+.dropdown-menu a:hover{
+    background:#f3f3f3;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+
+

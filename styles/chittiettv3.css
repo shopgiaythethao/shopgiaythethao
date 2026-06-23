@@ -1,0 +1,157 @@
+
+@charset "utf-8";
+/* CSS Document */
+/* HEADER */
+
+.header-new{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: black;
+
+    padding: 15px 30px;
+
+    border-bottom: 3px solid #ff5a00;
+}
+
+/* CHỮ CHẠY */
+
+.marquee{
+    overflow: hidden;
+    white-space: nowrap;
+
+    width: 60%;
+}
+
+.marquee p{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: inline-block;
+
+    animation: run 12s linear infinite;
+}
+
+@keyframes run{
+    from{
+        transform: translateX(100%);
+    }
+
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+/* MENU */
+
+.header-new nav ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.header-new nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 5px;
+}
+
+.header-new nav ul li a:hover{
+    background: #ff5a00;
+    color: black;
+}
+
+ body{
+    font-family: Arial;
+    margin: 0;
+    line-height: 1.7;
+}
+        img{
+
+   		width: 500px;
+
+    	display: block;
+  		 margin: 30px auto;
+   }
+   .container{
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.footer{
+    background:#0b2c3d;
+    color:white;
+    margin-top:50px;
+    padding-top:30px;
+}
+
+.footer-container{
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-col{
+    flex:1;
+    min-width:200px;
+}
+
+.footer-col h3,
+.footer-col h4{
+    margin-bottom:15px;
+}
+
+.footer-col p,
+.footer-col a{
+    display:block;
+    margin:0;
+    line-height:1.5;
+}
+
+.footer .footer-col a{
+    display:block !important;
+    color:#ccc;
+    text-decoration:none;
+}
+
+.footer-col a:hover{
+    color:#00e0ff;
+}
+
+/* subscribe */
+.subscribe{
+    text-align:center;
+    margin-top:25px;
+}
+
+.subscribe input{
+    width:250px;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+}
+
+.subscribe button{
+    padding:10px 15px;
+    border:none;
+    border-radius:5px;
+    background:#00e0ff;
+    cursor:pointer;
+}
+
+.footer-bottom{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.2);
+    margin-top:25px;
+    padding:15px 0;
+    font-size:13px;
+}
