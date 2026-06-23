@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Non</title>
+<link href="styles/dinhdangnon.css" type="text/css" rel="stylesheet"/>
+<style>
+    /* Thanh phụ chứa nút giỏ hàng nằm ngay dưới header */
+    .sub-bar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px 20px;
+        background-color: transparent;
+        position: relative;
+        z-index: 9999;
+    }
+    
+    /* Cấu trúc menu giỏ hàng thả xuống */
+    .cart-header {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative;
+    }
+
+    .cart-header .dropdown-toggle {
+        text-decoration: none !important;
+        font-weight: bold !important;
+        color: #333 !important; 
+        display: block !important;
+        padding: 8px 12px !important;
+        background: #fff !important; 
+        border-radius: 4px !important;
+        border: 1px solid #ddd !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        cursor: pointer;
+    }
+
+    /* Khối menu dropdown hiển thị danh sách sản phẩm đã mua */
+    .cart-header .dropdown-menu {
+        position: absolute !important;
+        right: 0 !important;
+        top: 100% !important;
+        width: 320px !important;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 15px !important;
+        background-color: #fff !important;
+        border: 1px solid #ccc !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        display: none !important; 
+        margin-top: 5px !important;
+        border-radius: 4px !important;
+    }
+
+    /* Rê chuột vào giỏ hàng sẽ tự động hiện danh sách */
+    .cart-header:hover .dropdown-menu {
+        display: block !important;
+    }
+
+
+/* 1. Hạ z-index thanh giỏ hàng để không che mất menu */
+.sub-bar {
+    z-index: 10 !important;
+}
+
+/* 2. Cho menu thả xuống của thanh điều hướng nổi lên TRÊN tất cả */
+.menu .dropdown-menu {
+    z-index: 10001 !important;
+}
+
+/* 3. Tạo "cầu nối" để chuột không rơi vào khoảng trống khi rê xuống */
+.menu .dropdown {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.menu .dropdown .dropdown-menu {
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+}
+
+/* Giữ menu giỏ hàng vẫn hoạt động bình thường */
+.cart-header .dropdown-menu {
+    z-index: 1000 !important;
+}
+</style>
+</head>
+
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="images/logo.jpg" />
+    </div>
+
+    <nav class="menu">
+        <a href="trangxuhuong.html">Xu Hướng <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchugiaynam.html">Nam <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchugiaynu.html">Nữ <i class="fa fa-chevron-down"></i></a>
+        
+        <div class="dropdown">
+            <a href="#"> Trẻ Em <i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <a href="trangchugiaytreemnam.html">Bé Trai</a>
+                <a href="trangchugiaytreemnu.html">Bé Gái</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Phụ Kiện <i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <a href="trangchuvonguoilon.html">Vớ Người Lớn</a>
+                <a href="trangchuvotreem.html">Vớ Trẻ em</a>
+                <a href="trangchunon.html">Nón</a>
+                <a href="trangchuxitkhumui.html">Xịt Khử Mùi</a>
+            </div>
+        </div>
+        <a href="trangchutuvan.html">Tư Vấn Chọn Size <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchukinhnghiemhay.html">Kinh Nghiệm Hay <i class="fa fa-chevron-down"></i></a>
+    </nav>
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Bạn đang tìm gì" onkeyup="showSuggestions()">
+        <i class="fa fa-search" onclick="executeSearch()"></i>
+        <div class="suggestions" id="suggestionsBox"></div>
+    </div>
+</header>
+
+<div class="sub-bar">
+    <ul class="cart-header">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">
+                🛒 Giỏ hàng (<span id="cart-count">0</span>)
+            </a>
+            <ul class="dropdown-menu">
+                <li id="cart-items" style="color: #000; list-style: none; text-align: left;">Chưa có sản phẩm</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<main></main>
+
+<h1 class="title">✨ Nón ✨</h1>
+
+<div class="product-list">
+    <div class="product-card">
+        <img src="images/non1.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">750.000đ</span>
+            <span class="old">800.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 1)', 750000, 'images/non1.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non2.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">550.000đ</span>
+            <span class="old">600.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 2)', 550000, 'images/non2.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non3.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">550.000đ</span>
+            <span class="old">600.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 3)', 550000, 'images/non3.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non4.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">550.000đ</span>
+            <span class="old">600.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 4)', 550000, 'images/non4.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non5.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">700.000đ</span>
+            <span class="old">750.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 5)', 700000, 'images/non5.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non6.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">650.000đ</span>
+            <span class="old">950.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 6)', 650000, 'images/non6.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non7.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">650.000đ</span>
+            <span class="old">950.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 7)', 650000, 'images/non7.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non8.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">500.000đ</span>
+            <span class="old">720.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 8)', 500000, 'images/non8.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non9.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">700.000đ</span>
+            <span class="old">855.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 9)', 700000, 'images/non9.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/non10.jpg">
+        <h3>Mũ golf adidas size OSFM</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">680.000đ</span>
+            <span class="old">780.000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Mũ golf adidas size OSFM (Mẫu 10)', 680000, 'images/non10.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+           <h3>SNEAKER STORE</h3>
+            <p>Step into your style 👟</p>
+        </div>
+        <div class="footer-col">
+            <h4>Liên hệ</h4>
+            <p>📍 TP.HCM</p>
+            <p>📞 0123 456 789</p>
+            <p>✉ sneaker@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <h4>Chính sách</h4>
+            <a href="trangchuchinhsachdoitra7day.html">Đổi trả 7 ngày</a>
+            <a href="chinhsachbaohanh.html">Bảo hành 30 ngày</a>
+            <a href="thanhtoancod.html">Thanh toán COD</a>
+            <a href="giaohangtoanquoc.html">Giao hàng toàn quốc</a>
+        </div>
+        <div class="footer-col">
+            <h4>Kết nối</h4>
+            <a href="#" class="social">Facebook</a>
+            <a href="#" class="social">Instagram</a>
+            <a href="#" class="social">TikTok</a>
+        </div>
+    </div>
+
+    <div class="subscribe">
+        <input type="text" id="emailInput" placeholder="Nhập email nhận ưu đãi">
+        <button onclick="subscribe()">Đăng ký</button>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Sneaker Store. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="popupCart" class="popup-cart" style="display:none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="popup-content" style="background-color: #fff; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 300px; text-align: center; border-radius: 5px;">
+        <h2 style="color: #000;">Thêm vào giỏ hàng</h2>
+        <select id="productSize" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="">-- Chọn size --</option>
+            <option>M</option>
+            <option>L</option>
+            <option>OSFM</option>
+        </select>
+        <input type="number" id="productQuantity" min="1" value="1" placeholder="Số lượng" style="width: 93%; padding: 8px; margin-bottom: 10px;">
+        <br>
+        <button onclick="confirmAddCart()" style="padding: 8px 15px; margin-right: 5px; cursor: pointer;">Xác nhận</button>
+        <button onclick="closePopup()" style="padding: 8px 15px; cursor: pointer;">Hủy</button>
+    </div>
+</div>
+
+<script src="./scripts/handleUser.js"></script>
+<script src="./scripts/handleEventCart.js"></script>
+</body>
+</html>

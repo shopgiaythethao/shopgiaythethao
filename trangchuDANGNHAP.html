@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+}
+
+.login-box{
+    width:380px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#111827;
+    font-size:32px;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#374151;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px;
+    border:2px solid #d1d5db;
+    border-radius:12px;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.input-box input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 8px rgba(37,99,235,0.3);
+}
+
+.remember{
+    margin-bottom:20px;
+    font-size:14px;
+    color:#374151;
+}
+
+.login-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:#1d4ed8;
+    transform:scale(1.02);
+}
+
+.signup{
+    text-align:center;
+    margin-top:25px;
+    font-size:15px;
+    color:#374151;
+}
+
+.signup a{
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.signup a:hover{
+    text-decoration:underline;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+    margin-top:5px;
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>Đăng nhập</h2>
+
+    <form id="loginForm">
+        <div class="input-box">
+            <label>Tên đăng nhập</label>
+            <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+            <div class="error" id="usernameError">Vui lòng nhập tên đăng nhập</div>
+        </div>
+
+        <div class="input-box">
+            <label>Mật khẩu</label>
+            <input type="password" id="password" placeholder="Nhập mật khẩu">
+            <div class="error" id="passwordError">Vui lòng nhập mật khẩu</div>
+        </div>
+
+        <div class="remember">
+            <input type="checkbox"> Ghi nhớ đăng nhập
+        </div>
+
+        <button type="submit" class="login-btn">Đăng nhập</button>
+    </form>
+
+    <div class="signup">
+        Chưa có tài khoản?
+        <a href="trangchuDANGKY.html">Đăng ký</a>
+    </div>
+</div>
+<script src="./scripts/handleUser.js"></script>
+<script>
+const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    let usernameError = document.getElementById("usernameError");
+    let passwordError = document.getElementById("passwordError");
+
+    let valid = true;
+
+    if(username.value.trim() === ""){
+        usernameError.style.display = "block";
+        valid = false;
+    } else {
+        usernameError.style.display = "none";
+    }
+
+    if(password.value.trim() === ""){
+        passwordError.style.display = "block";
+        valid = false;
+    } else {
+        passwordError.style.display = "none";
+    }
+
+    if(valid){
+        if(login(username.value.trim(), password.value.trim())){
+
+            window.location.href = "trangchu.html";
+        }
+        else{
+            alert("Sai tài khoản hoặc mật khẩu!");
+        }
+    }
+});
+</script>
+
+</body>
+</html>

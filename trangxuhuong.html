@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nam</title>
+<link href="styles/dinhdangxuhuong.css" type="text/css" rel="stylesheet"/>
+<style>
+    /* Thanh phụ chứa giỏ hàng nằm ngay dưới header */
+    .sub-bar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px 20px;
+        background-color: transparent;
+        position: relative;
+        z-index: 9999;
+    }
+    
+    /* Định dạng cụm nút giỏ hàng */
+    .cart-header {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative;
+    }
+
+    .cart-header .dropdown-toggle {
+        text-decoration: none !important;
+        font-weight: bold !important;
+        color: #333 !important; 
+        display: block !important;
+        padding: 8px 12px !important;
+        background: #fff !important; 
+        border-radius: 4px !important;
+        border: 1px solid #ddd !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        cursor: pointer;
+    }
+
+    /* Khối danh sách sản phẩm thả xuống (Dropdown) */
+    .cart-header .dropdown-menu {
+        position: absolute !important;
+        right: 0 !important;
+        top: 100% !important;
+        width: 320px !important;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 15px !important;
+        background-color: #fff !important;
+        border: 1px solid #ccc !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        display: none !important; 
+        margin-top: 5px !important;
+        border-radius: 4px !important;
+    }
+
+    /* Hover hiện giỏ hàng */
+    .cart-header:hover .dropdown-menu {
+        display: block !important;
+    }
+</style>
+</head>
+
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="images/logo.jpg" />
+    </div>
+
+    <nav class="menu">
+        <a href="trangxuhuong.html">Xu Hướng <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchugiaynam.html">Nam <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchugiaynu.html">Nữ <i class="fa fa-chevron-down"></i></a>
+        
+        <div class="dropdown">
+            <a href="#"> Trẻ Em <i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <a href="trangchugiaytreemnam.html">Bé Trai</a>
+                <a href="trangchugiaytreemnu.html">Bé Gái</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Phụ Kiện <i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <a href="trangchuvonguoilon.html">Vớ Người Lớn</a>
+                <a href="trangchuvotreem.html">Vớ Trẻ em</a>
+                <a href="trangchunon.html">Nón</a>
+                <a href="trangchuxitkhumui.html">Xịt Khử Mùi</a>
+            </div>
+        </div>
+        <a href="trangchutuvan.html">Tư Vấn Chọn Size <i class="fa fa-chevron-down"></i></a>
+        <a href="trangchukinhnghiemhay.html">Kinh Nghiệm Hay <i class="fa fa-chevron-down"></i></a>
+    </nav>
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Bạn đang tìm gì" onkeyup="showSuggestions()">
+        <i class="fa fa-search" onclick="executeSearch()"></i>
+        <div class="suggestions" id="suggestionsBox"></div>
+    </div>
+</header>
+
+<!-- THANH CHỨA GIỎ HÀNG NGAY DƯỚI HEADER -->
+<div class="sub-bar">
+    <ul class="cart-header">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">
+                🛒 Giỏ hàng (<span id="cart-count">0</span>)
+            </a>
+            <ul class="dropdown-menu">
+                <li id="cart-items" style="color: #000; list-style: none; text-align: left;">Chưa có sản phẩm</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- banner-->
+<main></main>
+
+<h1 class="title">✨ Thịnh Hành ✨</h1>
+
+<div class="product-list">
+    <!-- 1 -->
+    <div class="product-card">
+        <img src="images/hinhgiay1.jpg">
+        <h3>MLB Chunky Liner NY Embo Monogram Nâu Trắng REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,200,000đ</span>
+            <span class="old">2,500,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('MLB Chunky Liner NY Embo Monogram Trắng REP 1:1', 2300000, 'images/nam1.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card">
+        <img src="images/hinhgiay2.jpg">
+        <h3>Adidas Alphabounce Beyond Nâu Trắng REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">1,800,000đ</span>
+            <span class="old">2,100,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Adidas Alphabounce Beyond Kem Tím REP 1:1', 1800000, 'images/hinhgiay2.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card">
+        <img src="images/hinhgiay3.jpg">
+        <h3>Converse trắng kem REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">1,500,000đ</span>
+            <span class="old">2,300,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Converse 1970s Đen Cao Cổ REP 1:1', 1500000, 'images/hinhgiay3.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card">
+        <img src="images/hinhgiay4.jpg">
+        <h3>Giày Adidas Forum 84 Trắng Đen REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">1,150,000đ</span>
+            <span class="old">1,800,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Giày Adidas Forum 84 Trắng Đen REP 1:1', 1150000, 'images/hinhgiay4.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card">
+        <img src="images/hinhgiay5.jpg">
+        <h3>Nike Air Jordan 1 Low Đính Đá Trắng Đen Xám REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,000,000đ</span>
+            <span class="old">2,300,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Nike Air Jordan 1 Low Đính Đá Trắng Đen Xám REP 1:1', 2000000, 'images/hinhgiay5.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card">
+        <img src="images/hinhgiay6.jpg">
+        <h3>New Balance 530 Xám Trắng REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,500,000đ</span>
+            <span class="old">3,200,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('New Balance 530 Xám Trắng REP 1:1', 2500000, 'images/hinhgiay6.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card">
+        <img src="images/hinhgiay7.jpg">
+        <h3>Giày Adidas Forum 84 Trắng Đen REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">3,000,000đ</span>
+            <span class="old">3,300,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Giày Adidas Forum 84 Trắng Đen REP 1:1', 3000000, 'images/hinhgiay7.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card">
+        <img src="images/hinhgiay8.jpg">
+        <h3>Giày Nike SB Force 58 Đen REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,200,000đ</span>
+            <span class="old">3,700,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Giày Nike SB Force 58  Đen REP 1:1', 2200000, 'images/hinhgiay8.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 9 -->
+    <div class="product-card">
+        <img src="images/hinhgiay9.jpg">
+        <h3>Nike Jordan 1 Low Đen REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,600,000đ</span>
+            <span class="old">3,300,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Nike Jordan 1 Low Đen REP 1:1', 2600000, 'images/hinhgiay9.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+
+    <!-- 10 -->
+    <div class="product-card">
+        <img src="images/hinhgiay10.jpg">
+        <h3>Nike Jordan 1 Low Year Of Dragon Trắng Mận REP 1:1</h3>
+        <p class="type">Khác</p>
+        <div class="price">
+            <span class="new">2,900,000đ</span>
+            <span class="old">3,500,000đ</span>
+        </div>
+        <button class="add-cart" onclick="openPopup('Nike Jordan 1 Low Year Of Dragon Trắng Mận REP 1:1', 2900000, 'images/hinhgiay10.jpg')">
+            Thêm vào giỏ hàng
+        </button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+           <h3>SNEAKER STORE</h3>
+            <p>Step into your style 👟</p>
+        </div>
+        <div class="footer-col">
+            <h4>Liên hệ</h4>
+            <p>📍 TP.HCM</p>
+            <p>📞 0123 456 789</p>
+            <p>✉ sneaker@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <h4>Chính sách</h4>
+            <a href="trangchuchinhsachdoitra7day.html">Đổi trả 7 ngày</a>
+            <a href="chinhsachbaohanh.html">Bảo hành 30 ngày</a>
+            <a href="thanhtoancod.html">Thanh toán COD</a>
+            <a href="giaohangtoanquoc.html">Giao hàng toàn quốc</a>
+        </div>
+        <div class="footer-col">
+            <h4>Kết nối</h4>
+            <a href="#" class="social">Facebook</a>
+            <a href="#" class="social">Instagram</a>
+            <a href="#" class="social">TikTok</a>
+        </div>
+    </div>
+    <div class="subscribe">
+        <input type="text" id="emailInput" placeholder="Nhập email nhận ưu đãi">
+        <button onclick="subscribe()">Đăng ký</button>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Sneaker Store. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- POPUP CHỌN SIZE SỐ LƯỢNG -->
+<div id="popupCart" class="popup-cart" style="display:none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="popup-content" style="background-color: #fff; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 300px; text-align: center; border-radius: 5px;">
+        <h2 style="color: #000;">Thêm vào giỏ hàng</h2>
+        <select id="productSize" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="">-- Chọn size --</option>
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+            <option>43</option>
+        </select>
+        <input type="number" id="productQuantity" min="1" value="1" placeholder="Số lượng" style="width: 93%; padding: 8px; margin-bottom: 10px;">
+        <br>
+        <button onclick="confirmAddCart()" style="padding: 8px 15px; margin-right: 5px; cursor: pointer;">Xác nhận</button>
+        <button onclick="closePopup()" style="padding: 8px 15px; cursor: pointer;">Hủy</button>
+    </div>
+</div>
+
+<script src="./scripts/handleUser.js"></script>
+<script src="./scripts/handleEventCart.js"></script> 
+</body>
+</html>
